@@ -14,12 +14,16 @@
  * ASCII or UNICODE strings?
  */
 #include <string>
+#include <map>
 #include <iostream>
+#include <cstdint>
+#include <bitset>
+
 #include "02 CheckPermutation.h"
+
 
 bool isPalindrom(const std::string& str)
 {
-    std::cout << str << std::endl;
     if(str.size() < 2)
         return true;
 
@@ -62,11 +66,44 @@ bool isPalindrom(const std::string& str)
 }
 
 
-bool isPalindromPermutation(const std::string& palindrome, const std::string& permutation)
+bool isPalindromPermutation(const std::string& str)
 {
-    if(palindrome.size() != permutation.size())
-        return false;
+    std::map<char, bool> letterOccurances;
 
-    return isPalindrom(palindrome) && CheckPermutation(palindrome, permutation);
+    for(const char ch : str)
+    {
+        if(ch != ' ')
+            letterOccurances[ch] = !letterOccurances[ch];
+    }
+
+    int without_pairs = 0;
+    for(const auto& ch2o : letterOccurances)
+    {
+        if(ch2o.second) 
+            ++without_pairs;
+        if(without_pairs > 1)
+            return false;
+    } 
+
+    return true;
+}
+
+
+inline void flipBit(uint32_t& mask, int bitNumber)
+{
+    mask = mask ^ (1 << bitNumber);
+}
+
+
+bool isPalindromPermutationBitMasks(const std::string& str)
+{
+    //assuming english alphabet
+    uint32_t characterBits = 0;
+    
+    for(const char ch : str)
+        if(ch-'a' < 26 && ch-'a'>-1)
+            flipBit(characterBits, ch-'a');
+
+    return (characterBits & (characterBits - 1)) == 0;
 }
 

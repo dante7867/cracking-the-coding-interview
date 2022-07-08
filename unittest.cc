@@ -1,4 +1,5 @@
 #include <gtest/gtest.h>
+#include <cmath>
 
 #include "01 IsUnique.h"
 #include "02 CheckPermutation.h"
@@ -152,17 +153,46 @@ TEST(ch1ex4_PalindromePermutations, ArePalindromWithTrailingOrStartingStrings)
     EXPECT_TRUE(isPalindrom(___ab_ba__));
 }
 
+
+TEST(ch1ex4_toggleBit, BitFlipping)
+{
+    uint32_t num = 4;
+    flipBit(num, 2);
+    EXPECT_EQ(0, num); 
+
+    num = 1;
+    flipBit(num, 0);
+    EXPECT_EQ(0, num); 
+
+    for(int i = 0; i < 32; ++i)
+    {
+        num = 0;
+        flipBit(num, i);
+        EXPECT_EQ(pow(2, i), num); 
+    }
+    
+    num = 3;
+    flipBit(num, 0);
+    EXPECT_EQ(2, num);
+}
+
+
 TEST(ch1ex4_PalindromePermutations, ArePalindromPermutation)
 {
     const std::string taco_cat = "taco cat"; 
+    EXPECT_TRUE(isPalindromPermutation(taco_cat));
+    EXPECT_TRUE(isPalindromPermutationBitMasks(taco_cat));
+
     const std::string atco_cta = "atco cta";
-    EXPECT_TRUE(isPalindromPermutation(taco_cat, atco_cta));
+    EXPECT_TRUE(isPalindromPermutation(atco_cta));
+    EXPECT_TRUE(isPalindromPermutationBitMasks(atco_cta));
 }
+
 
 TEST(ch1ex4_PalindromePermutations, NotPalindromPermutation)
 {
-    const std::string taco_cat = "taco cat"; 
     const std::string atco_ctc = "atco ctc";
-    EXPECT_FALSE(isPalindromPermutation(taco_cat, atco_ctc));
+    EXPECT_FALSE(isPalindromPermutation(atco_ctc));
+    EXPECT_FALSE(isPalindromPermutationBitMasks(atco_ctc));
 }
 

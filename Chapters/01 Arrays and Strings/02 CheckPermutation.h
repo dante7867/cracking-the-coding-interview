@@ -32,7 +32,6 @@ bool CheckPermutation(const std::string& lhs, const std::string& rhs)
         charCount[ch] -= 1;
         if(charCount[ch] < 0)
         {
-            std::cout << ch << std::endl;
             return false;
         }
     }
@@ -40,9 +39,9 @@ bool CheckPermutation(const std::string& lhs, const std::string& rhs)
 }
 
 
-constexpr int ALPHABET_SIZE = 128;
 bool CheckPermutationKnownCharacterSets(const std::string& lhs, const std::string& rhs)
 {
+    const int ALPHABET_SIZE = 128;
     if(lhs.length() != rhs.length())
         return false;
 
