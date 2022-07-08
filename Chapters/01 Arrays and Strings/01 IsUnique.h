@@ -60,6 +60,9 @@ bool inUniqueNoDataStructuresBruteForce(const std::string& str)
 // str can be passed by ref or moved if it's no longer needed after call
 bool isUniqueNoDataStructuresWithSort(std::string str)
 {
+    if(""==str)
+        return true;
+
     std::sort(std::begin(str), std::end(str));
     for(size_t idx = 1; idx != str.length(); ++idx)
     {
@@ -68,22 +71,3 @@ bool isUniqueNoDataStructuresWithSort(std::string str)
     } 
     return true;
 }
-/*
-int main()
-{
-    const std::string str1 = "abcdefghijk";
-    const std::string str2 = "aab";
-
-    std::cout << isUniqueWithArray(str1) << '\n';
-    std::cout << isUniqueWithArray(str2) << '\n';
-
-    std::cout << isUniqueWithSet(str1) << '\n';
-    std::cout << isUniqueWithSet(str2) << '\n';
-
-    std::cout << inUniqueNoDataStructuresBruteForce(str1) << '\n';
-    std::cout << inUniqueNoDataStructuresBruteForce(str2) << '\n';
-
-    std::cout << isUniqueNoDataStructuresWithSort(str1) << '\n';
-    std::cout << isUniqueNoDataStructuresWithSort(str2) << '\n';
-}
-*/

@@ -13,16 +13,29 @@ FetchContent_Declare(
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
 
-enable_testing()
+set(
+    SOURCES 
+    "Chapters/01 Arrays and Strings/01 IsUnique.h" 
+    "Chapters/01 Arrays and Strings/02 CheckPermutation.h"
+    "Chapters/01 Arrays and Strings/03 Urlify.h"
+    "Chapters/01 Arrays and Strings/04 Palindrome permutation.h"
+)
+
+enable_testing() 
+
 
 add_executable(
   unittest
   unittest.cc
+  ${SOURCES}
 )
+
 target_link_libraries(
   unittest
   gtest_main
 )
+
+target_include_directories(unittest PRIVATE "Chapters/01 Arrays and Strings")
 
 include(GoogleTest)
 gtest_discover_tests(unittest)

@@ -1,3 +1,2 @@
 cmake --build build;
-cls;
-ctest --test-dir build --verbose
+ctest --test-dir build //--verbose 
