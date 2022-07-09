@@ -21,7 +21,7 @@
 
 #include "02 CheckPermutation.h"
 
-
+// Time complexity - O(S), S - string length
 bool isPalindrom(const std::string& str)
 {
     if(str.size() < 2)
@@ -53,19 +53,16 @@ bool isPalindrom(const std::string& str)
            break;
 
         if(str[leftIdx] != str[rightIdx])
-        {
             return false;
-        }
 
         ++leftIdx;
         --rightIdx;
-        
     }
     
     return true;
 }
 
-
+// Time complexity - O(S+U), S - string length, U - unique letters in str
 bool isPalindromPermutation(const std::string& str)
 {
     std::map<char, bool> letterOccurances;
@@ -88,13 +85,13 @@ bool isPalindromPermutation(const std::string& str)
     return true;
 }
 
-
+// Time complexity - O(1) 
 inline void flipBit(uint32_t& mask, int bitNumber)
 {
     mask = mask ^ (1 << bitNumber);
 }
 
-
+// Time complexity - O(S), S - string length
 bool isPalindromPermutationBitMasks(const std::string& str)
 {
     //assuming english alphabet

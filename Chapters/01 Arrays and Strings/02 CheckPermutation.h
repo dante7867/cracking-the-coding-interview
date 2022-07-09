@@ -17,6 +17,7 @@
 
 
 // Assuming permutation with repetitions
+// Time complexity - O(S), S - string length
 bool CheckPermutation(const std::string& lhs, const std::string& rhs)
 {
     if(lhs.length() != rhs.length())
@@ -38,7 +39,7 @@ bool CheckPermutation(const std::string& lhs, const std::string& rhs)
     return true;
 }
 
-
+// Time complexity - O(S), S - string length
 bool CheckPermutationKnownCharacterSets(const std::string& lhs, const std::string& rhs)
 {
     const int ALPHABET_SIZE = 128;

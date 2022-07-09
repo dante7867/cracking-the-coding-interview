@@ -39,10 +39,14 @@ std::string compress(const std::string& original)
     // add trailing character
     compressed += prevChar + std::to_string(cnt);
 
+    // early return to bypass shrink_to_fit() if not needed
+    if (compressed.size() >= original.size())
+        return original
+
     // I assumed size pesimisticaly. Reducing capacity to size. May cause rellocation + O(n)
     compressed.shrink_to_fit(); 
 
     // if compressed is not smaller than original return original
-    return (compressed.size() < original.size()) ? compressed : original;
+    return compressed;
 }
 

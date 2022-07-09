@@ -12,7 +12,7 @@
 #include <set>
 #include <array>
 
-
+// Time complexity - O(S), S - string length
 bool isUniqueWithArray(const std::string& str)
 {
     // assuming 128-character alphabet. Coule be 256 or more for extended alphabet
@@ -28,7 +28,7 @@ bool isUniqueWithArray(const std::string& str)
     return true;    
 }
 
-
+// Time complexity - O(S*logU), S - string length, U-number of unique chars in string
 bool isUniqueWithSet(const std::string& str)
 {
     std::set<char> chars;
@@ -41,7 +41,7 @@ bool isUniqueWithSet(const std::string& str)
     return true;
 }
 
-
+// Time complexity - O(S*S), S - string length
 bool inUniqueNoDataStructuresBruteForce(const std::string& str)
 {
     for(size_t i = 0; i != str.size();  ++i)
@@ -58,12 +58,13 @@ bool inUniqueNoDataStructuresBruteForce(const std::string& str)
 
 
 // str can be passed by ref or moved if it's no longer needed after call
+// Time complexity - O(S*S*logS), S - string length
 bool isUniqueNoDataStructuresWithSort(std::string str)
 {
     if(""==str)
         return true;
 
-    std::sort(std::begin(str), std::end(str));
+    std::sort(std::begin(str), std::end(str)); // S*logS
     for(size_t idx = 1; idx != str.length(); ++idx)
     {
         if(str[idx-1] == str[idx])

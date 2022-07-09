@@ -18,6 +18,7 @@ pale, bake -> false
  * ASCII or UNICODE strings?
  */
 
+// Time complexity - O(S), S - longer string length
 bool isOneAway(const std::string& sLeft, const std::string& sRight)
 {
     if(fabs(sLeft.size() - sRight.size()) > 1)
