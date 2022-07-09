@@ -5,6 +5,8 @@
 #include "02 CheckPermutation.h"
 #include "03 Urlify.h"
 #include "04 Palindrome permutation.h"
+#include "05 One away.h"
+#include "06 String compression.h"
 
 
 TEST(ch1ex1_isUnique, ZeroLengthStr)
@@ -196,3 +198,36 @@ TEST(ch1ex4_PalindromePermutations, NotPalindromPermutation)
     EXPECT_FALSE(isPalindromPermutationBitMasks(atco_ctc));
 }
 
+
+TEST(ch1ex5_OneAway, EmptyString)
+{
+    std::cout << isOneAway("", "") << std::endl;
+}
+
+TEST(ch1ex5_OneAway, ValidInputs)
+{
+    EXPECT_TRUE(isOneAway("pale", "pale"));
+    EXPECT_TRUE(isOneAway("pale", "ple"));
+    EXPECT_TRUE(isOneAway("pales", "pale"));
+    EXPECT_TRUE(isOneAway("pale", "bale"));
+
+    EXPECT_FALSE(isOneAway("pale", "bake"));
+    EXPECT_FALSE(isOneAway("pale", "pale12"));
+    EXPECT_FALSE(isOneAway("pale", ""));
+    EXPECT_FALSE(isOneAway("abcde", "bcda"));
+}
+
+TEST(ch1ex6_StringCompression, ValidInputs)
+{
+    const std::string emptyString = "";
+    EXPECT_EQ("", compress(emptyString));
+
+    const std::string compressable = "aabcccccaaa";
+    EXPECT_EQ("a2b1c5a3", compress(compressable));
+
+    const std::string notWorthCompressing = "aabbcc";
+    EXPECT_EQ("aabbcc", compress(notWorthCompressing));
+
+    const std::string xx = "abc";
+    EXPECT_EQ("abc", compress(xx));
+}
