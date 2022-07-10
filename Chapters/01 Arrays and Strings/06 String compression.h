@@ -43,7 +43,8 @@ std::string compress(const std::string& original)
     if (compressed.size() >= original.size())
         return original
 
-    // I assumed size pesimisticaly. Reducing capacity to size. May cause rellocation + O(n)
+    // I assumed capacity pessimistically. Reducing capacity to size. 
+    // May cause rellocation and add O(n) to time complexity in favor for space complexity.
     compressed.shrink_to_fit(); 
 
     // if compressed is not smaller than original return original
