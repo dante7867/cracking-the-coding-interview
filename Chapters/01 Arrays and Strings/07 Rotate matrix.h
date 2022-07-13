@@ -20,6 +20,7 @@ void printMatrix(const std::vector<std::vector<int>>& matrix)
 }
 
 
+// Time - O(N*N), space - O(N*N+N) => O(N), where vector is of NxN size 
 void rotateMatrixSwapEdges(std::vector<std::vector<int>>& matrix)
 {
     const size_t SIZE = matrix[0].size();
@@ -38,7 +39,7 @@ void rotateMatrixSwapEdges(std::vector<std::vector<int>>& matrix)
         
         y = depth;
         for(int& cur : temp)
-            std::swap(cur, matrix[y++][SIZE-1-depth]);
+            std::swap(cur, matrix[y++][SIZE-1-depth]); // swap is O(N)
         x = SIZE - 1 - depth;
         for(int& cur : temp)
             std::swap(cur, matrix[SIZE-1-depth][x--]);
@@ -55,6 +56,8 @@ void rotateMatrixSwapEdges(std::vector<std::vector<int>>& matrix)
 }
 
 
+// Time - O(N*N), space - O(N*N+N) => O(N), where vector is of NxN size. 
+// Much less swaps 
 void rotateMatrix(std::vector<std::vector<int>>& matrix)
 {
     const size_t SIZE = matrix[0].size();
@@ -95,19 +98,4 @@ void rotateMatrix(std::vector<std::vector<int>>& matrix)
         temp.clear();
     };
 }
-/*
-int main()
-{
-    std::vector<std::vector<int>> three = { { 1, 2, 3},
-                                            { 4, 5, 6},
-                                            { 7, 8, 9}};
 
-    std::vector<std::vector<int>> four = { { 1, 2, 3, 4},
-                                           { 5, 6, 7, 8},
-                                           { 9,10,11,12},
-                                           {13,14,15,16}};
-    rotateMatrix(four);
-
-    printMatrix(four);
-}
-*/

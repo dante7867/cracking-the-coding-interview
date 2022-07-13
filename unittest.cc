@@ -337,11 +337,17 @@ TEST(ch1ex8_ZeroMatrix, nIsFive)
 
 TEST(ch1ex9_RotateString, isRotated)
 {
+    EXPECT_TRUE(isRotation("", ""));
     EXPECT_TRUE(isRotation("waterbottle", "erbottlewat"));
+    EXPECT_TRUE(isRotation("abcdefgh", "defghabc"));
+    EXPECT_TRUE(isRotation("abc", "abc"));
 }
 
 
 TEST(ch1ex9_RotateString, IsNotRotated)
 {
     EXPECT_FALSE(isRotation("waterbottlx", "erbottlewat"));
+    EXPECT_FALSE(isRotation("abc", "abd"));
+    EXPECT_FALSE(isRotation("abc", "ac"));
+    EXPECT_FALSE(isRotation("abc", "abcd"));
 }
