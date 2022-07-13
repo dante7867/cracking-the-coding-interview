@@ -21,6 +21,7 @@
 
 #include "02 CheckPermutation.h"
 
+
 // Time complexity - O(S), S - string length
 bool isPalindrom(const std::string& str)
 {
@@ -28,7 +29,7 @@ bool isPalindrom(const std::string& str)
         return true;
 
     int leftIdx = 0;
-    int rightIdx = str.size()-1;
+    int rightIdx = static_cast<int>(str.size()-1);
 
     while(leftIdx < str.size() && rightIdx > -1)
     {
@@ -61,6 +62,7 @@ bool isPalindrom(const std::string& str)
     
     return true;
 }
+
 
 // Time complexity - O(S+U), S - string length, U - unique letters in str
 bool isPalindromPermutation(const std::string& str)

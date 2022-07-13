@@ -7,7 +7,9 @@
 #include "04 Palindrome permutation.h"
 #include "05 One away.h"
 #include "06 String compression.h"
-
+#include "07 Rotate matrix.h"
+#include "08 Zero matrix.h"
+#include "09 Rotate string.h"
 
 TEST(ch1ex1_isUnique, ZeroLengthStr)
 {
@@ -217,6 +219,7 @@ TEST(ch1ex5_OneAway, ValidInputs)
     EXPECT_FALSE(isOneAway("abcde", "bcda"));
 }
 
+
 TEST(ch1ex6_StringCompression, ValidInputs)
 {
     const std::string emptyString = "";
@@ -230,4 +233,115 @@ TEST(ch1ex6_StringCompression, ValidInputs)
 
     const std::string xx = "abc";
     EXPECT_EQ("abc", compress(xx));
+}
+
+
+TEST(ch1ex7_RotateMatrix, nIsThree)
+{
+    std::vector<std::vector<int>> three = { { 1, 2, 3},
+                                            { 4, 5, 6},
+                                            { 7, 8, 9}}; 
+    std::vector<std::vector<int>> rotated_three = {{7,4,1},
+                                                   {8,5,2},
+                                                   {9,6,3}};
+    rotateMatrix(three);
+    EXPECT_EQ(rotated_three, three);
+}
+
+
+TEST(ch1ex7_RotateMatrix, nIsFour)
+{
+    std::vector<std::vector<int>> four = { { 1, 2, 3, 4},
+                                           { 5, 6, 7, 8},
+                                           { 9,10,11,12},
+                                           {13,14,15,16}};
+
+    std::vector<std::vector<int>> rotated_four = {{13, 9, 5, 1},
+                                                  {14,10, 6, 2},
+                                                  {15,11, 7, 3},
+                                                  {16,12, 8, 4} 
+                                                 };
+    rotateMatrix(four);
+    EXPECT_EQ(rotated_four, four);
+}
+
+
+TEST(ch1ex7_RotateMatrix, nIsFive)
+{
+    std::vector<std::vector<int>> five = { { 1, 2, 3, 4, 5},
+                                           { 6, 7, 8, 9,10},
+                                           {11,12,13,14,15},
+                                           {16,17,18,19,20},
+                                           {21,22,23,24,25}};
+    
+    std::vector<std::vector<int>> rotated_five = {{21,16,11, 6, 1},
+                                                  {22,17,12, 7, 2},
+                                                  {23,18,13, 8, 3},
+                                                  {24,19,14, 9, 4},
+                                                  {25,20,15,10, 5}
+                                                 };
+    rotateMatrix(five);
+    EXPECT_EQ(rotated_five, five);
+}
+
+
+TEST(ch1ex8_ZeroMatrix, nIsThree)
+{
+    std::vector<std::vector<int>> three = { { 1, 2, 3},
+                                            { 4, 0, 6},
+                                            { 7, 8, 9}};
+    
+
+    std::vector<std::vector<int>> zeroed_three = { { 1, 0, 3},
+                                            { 0, 0, 0},
+                                            { 7, 0, 9}};
+    zeroMatrix(three);
+    EXPECT_EQ(zeroed_three, three);
+}
+
+TEST(ch1ex8_ZeroMatrix, nIsFour)
+{
+    std::vector<std::vector<int>> four = { { 1, 0, 3, 4},
+                                           { 5, 6, 7, 8},
+                                           { 9,10,11,12},
+                                           {13,14,15,16}};
+
+    std::vector<std::vector<int>> zeroed_four = { { 0, 0, 0, 0},
+                                           { 5, 0, 7, 8},
+                                           { 9, 0,11,12},
+                                           {13, 0,15,16}};
+
+    zeroMatrix(four);
+    EXPECT_EQ(zeroed_four, four);
+}
+
+
+TEST(ch1ex8_ZeroMatrix, nIsFive)
+{
+    std::vector<std::vector<int>> five = { { 1, 0, 3, 4, 5},
+                                           { 6, 7, 8, 9,10},
+                                           {11,12,13,14,15},
+                                           {16,17,18,19,20},
+                                           {21,22,23, 0,25}};
+    
+    std::vector<std::vector<int>> zeroedfive = { { 0, 0, 0, 0, 0},
+                                                 { 6, 0, 8, 0,10},
+                                                 {11, 0,13, 0,15},
+                                                 {16, 0,18, 0,20},
+                                                 { 0, 0, 0, 0, 0}};
+
+    zeroMatrix(five);
+    EXPECT_EQ(zeroedfive, five);
+}
+
+
+TEST(ch1ex9_RotateString, isRotated)
+{
+    EXPECT_TRUE(isRotation("waterbottle", "erbottlewat"));
+}
+
+
+TEST(ch1ex9_RotateString, IsNotRotated)
+{
+    EXPECT_FALSE(isRotation("waterbottlx", "erbottlewat"));
 }

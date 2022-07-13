@@ -41,7 +41,7 @@ std::string compress(const std::string& original)
 
     // early return to bypass shrink_to_fit() if not needed
     if (compressed.size() >= original.size())
-        return original
+        return original;
 
     // I assumed capacity pessimistically. Reducing capacity to size. 
     // May cause rellocation and add O(n) to time complexity in favor for space complexity.
