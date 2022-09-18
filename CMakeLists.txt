@@ -13,29 +13,20 @@ FetchContent_Declare(
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
 
-set(
-    SOURCES 
-    "Chapters/01 Arrays and Strings/01 IsUnique.h" 
-    "Chapters/01 Arrays and Strings/02 CheckPermutation.h"
-    "Chapters/01 Arrays and Strings/03 Urlify.h"
-    "Chapters/01 Arrays and Strings/04 Palindrome permutation.h"
-)
 
 enable_testing() 
 
-
 add_executable(
-  unittest
-  unittest.cc
-  ${SOURCES}
+  chapter2
+  chapter2.cc
 )
 
 target_link_libraries(
-  unittest
+  chapter2
   gtest_main
 )
 
-target_include_directories(unittest PRIVATE "Chapters/01 Arrays and Strings")
+target_include_directories(chapter2 PRIVATE "Chapters/01 Arrays and Strings" "Chapters/02 Linked Lists")
 
 include(GoogleTest)
-gtest_discover_tests(unittest)
+gtest_discover_tests(chapter2)

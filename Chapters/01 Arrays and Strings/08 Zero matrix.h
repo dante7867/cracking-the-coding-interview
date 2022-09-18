@@ -9,8 +9,8 @@ void zeroMatrix(std::vector<std::vector<int>>& matrix)
     const size_t H = matrix.size();
     const size_t L = matrix[0].size();
 
-    std::vector<bool> columns_to_zero{L, false};
-    std::vector<bool> rows_to_zero{H, false};
+    std::vector<bool> columns_to_zero(L, false);
+    std::vector<bool> rows_to_zero(H, false);
 
     size_t x, y;
 
