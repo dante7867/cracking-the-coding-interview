@@ -350,3 +350,49 @@ TEST(ch2_ex5_sumListsForwardOrder, example)
     n2->appendToTail(2);
     EXPECT_EQ(716+592, sumListsForwardOrder(n1, n2));
 }
+
+
+TEST(ch2_ex6_isPalindrome, retTrue)
+{
+    Node* n1 = new Node(7);
+    n1->appendToTail(1);
+    n1->appendToTail(7);
+    EXPECT_TRUE(isPalindrome(n1));
+
+}
+
+
+TEST(ch2_ex6_isPalindrome, retFalse)
+{
+    Node* n1 = new Node(7);
+    n1->appendToTail(1);
+    n1->appendToTail(6);
+    EXPECT_FALSE(isPalindrome(n1));
+}
+
+
+TEST(ch2_ex6_isPalindromeWithVector, oneItemList)
+{
+    Node* n1 = new Node(7);
+    EXPECT_TRUE(isPalindrome(n1));
+}
+
+
+TEST(ch2_ex6_isPalindromeWithVector, retTrue)
+{
+    Node* n1 = new Node(7);
+    n1->appendToTail(1);
+    n1->appendToTail(7);
+    EXPECT_TRUE(isPalindromeWithVector(n1));
+
+}
+
+
+TEST(ch2_ex6_isPalindromeWithVector, retFalse)
+{
+    Node* n1 = new Node(7);
+    n1->appendToTail(1);
+    n1->appendToTail(6);
+    EXPECT_FALSE(isPalindromeWithVector(n1));
+}
+

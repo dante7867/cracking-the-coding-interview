@@ -1,3 +1,4 @@
+#include <stack>
 #include <iostream>
 #include <algorithm>
 #include <set>
@@ -272,4 +273,59 @@ int toIntForwardOrder(Node* n)
 int sumListsForwardOrder(Node* n1, Node* n2)
 {
     return toIntForwardOrder(n1) + toIntForwardOrder(n2);
+}
+
+
+/*
+ * 2.6 Palindrome: Implement a function to check if a linked list is a palindrome.
+ * Hints:#5, #13, #29, #61, #101
+ */
+bool isPalindrome(Node* n)
+{
+    if(!n->next)
+	return true;
+
+    std::stack<int> stack;
+    Node* p1 = n;
+    Node* p2 = n;
+    
+    // find node in the middle
+    while(p2)
+    {
+	p2 = p2->next;
+	if(p2)
+	{
+	   p2 = p2->next;
+	   p1 = p1->next;
+	}
+    }
+    // push values from middle to stack
+    p2 = p1;
+    while(p2)
+    {
+        stack.push(p2->val);
+	p2 = p2->next;
+    }
+    // compare stack with beggining of the list
+    while(n!=p1)
+    {
+	if(stack.top() != n->val)
+	    return false;
+	stack.pop();
+	n = n->next;
+    }
+    return true;
+}
+
+
+bool isPalindromeWithVector(Node* n)
+{
+    auto vec = n->toVector();
+    size_t i, j;
+    for(i = 0, j = vec.size() - 1; i < j; ++i, --j)
+    {
+        if(vec[i] != vec[j])
+	    return false;
+    }
+    return true;
 }
