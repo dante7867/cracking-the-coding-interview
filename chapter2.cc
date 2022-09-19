@@ -276,3 +276,77 @@ TEST(ch2_ex4_partition, ValueSmallerThanAnyListElement)
     auto vec = n->toVector();
     EXPECT_TRUE(std::is_partitioned(vec.begin(), vec.end(), is_smaller_than_0));
 }
+
+
+TEST(ch2_ex5_sumLists, differentLengths)
+{
+
+    Node* n1 = new Node(7);
+    n1->appendToTail(1);
+    n1->appendToTail(6);
+    n1->appendToTail(1);
+
+    Node* n2 = new Node(5);
+    n2->appendToTail(9);
+    n2->appendToTail(2);
+    EXPECT_EQ(1617+295, sumLists(n1, n2));
+}
+
+
+TEST(ch2_ex5_sumLists, sameLengthLists)
+{
+    Node* n = new Node(1);
+    n->appendToTail(2);
+    n->appendToTail(3);
+    EXPECT_EQ(321+321, sumLists(n, n));
+}
+
+
+TEST(ch2_ex5_sumLists, example)
+{
+    Node* n1 = new Node(7);
+    n1->appendToTail(1);
+    n1->appendToTail(6);
+
+    Node* n2 = new Node(5);
+    n2->appendToTail(9);
+    n2->appendToTail(2);
+    EXPECT_EQ(617+295, sumLists(n1, n2));
+}
+
+
+TEST(ch2_ex5_sumListsForwardOrder, differentLengths)
+{
+
+    Node* n1 = new Node(7);
+    n1->appendToTail(1);
+    n1->appendToTail(6);
+    n1->appendToTail(1);
+
+    Node* n2 = new Node(5);
+    n2->appendToTail(9);
+    n2->appendToTail(2);
+    EXPECT_EQ(7161+592, sumListsForwardOrder(n1, n2));
+}
+
+
+TEST(ch2_ex5_sumListsForwardOrder, sameLengthLists)
+{
+    Node* n = new Node(1);
+    n->appendToTail(2);
+    n->appendToTail(3);
+    EXPECT_EQ(123+123, sumListsForwardOrder(n, n));
+}
+
+
+TEST(ch2_ex5_sumListsForwardOrder, example)
+{
+    Node* n1 = new Node(7);
+    n1->appendToTail(1);
+    n1->appendToTail(6);
+
+    Node* n2 = new Node(5);
+    n2->appendToTail(9);
+    n2->appendToTail(2);
+    EXPECT_EQ(716+592, sumListsForwardOrder(n1, n2));
+}
