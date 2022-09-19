@@ -396,3 +396,49 @@ TEST(ch2_ex6_isPalindromeWithVector, retFalse)
     EXPECT_FALSE(isPalindromeWithVector(n1));
 }
 
+
+TEST(ch2_ex7_intersection, areIntersecting)
+{
+    Node* n1 = new Node(1);
+    Node* n2 = new Node(1);
+    Node* n3 = new Node(1);
+    Node* n4 = new Node(1);
+
+    Node* m1 = new Node(11);
+    Node* m2 = new Node(22);
+    Node* m3 = new Node(33);
+
+    n1->next = n2;
+    n2->next = n3;
+    n3->next = n4;
+
+    m1->next = m2;
+    m2->next = m3;
+    m3->next = n3;
+
+    EXPECT_EQ(n3, getIntersection(n1, m1));
+}
+
+
+TEST(ch2_ex7_intersection, areNotIntersecting)
+{
+    Node* n1 = new Node(1);
+    Node* n2 = new Node(1);
+    Node* n3 = new Node(1);
+    Node* n4 = new Node(1);
+
+    Node* m1 = new Node(11);
+    Node* m2 = new Node(22);
+    Node* m3 = new Node(33);
+
+    n1->next = n2;
+    n2->next = n3;
+    n3->next = n4;
+
+    m1->next = m2;
+    m2->next = m3;
+
+    EXPECT_EQ(nullptr, getIntersection(n1, m1));
+}
+
+

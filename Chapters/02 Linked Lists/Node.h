@@ -329,3 +329,31 @@ bool isPalindromeWithVector(Node* n)
     }
     return true;
 }
+
+
+/*
+2.7 Intersection: Given two (singly) linked lists, determine if the two lists intersect. Return the intersecting node. Note that the intersection is defined based on reference, not value. That is, if the kth
+node of the first linked list is the exact same node (by reference) as the jth node of the second
+linked list, then they are intersecting.
+Hints:#20, #45, #55, #65, #76, #93, #111, #120, #129
+*/
+
+Node* getIntersection(Node* n1, Node* n2)
+{
+    // easy in c++ since we can comepare addresses
+    while(n1)
+    {
+	Node* m = n2;
+	while(m)
+	{
+	     if(m == n1)
+		return m;
+	     m = m->next;
+	}
+	n1 = n1->next;
+    }
+    return nullptr;
+}
+
+
+
