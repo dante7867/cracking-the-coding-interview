@@ -442,3 +442,33 @@ TEST(ch2_ex7_intersection, areNotIntersecting)
 }
 
 
+TEST(ch2_ex8_loopDetection, loopPresent)
+{
+    Node* n1 = new Node(1);
+    Node* n2 = new Node(1);
+    Node* n3 = new Node(1);
+    Node* n4 = new Node(1);
+
+    n1->next = n2;
+    n2->next = n3;
+    n3->next = n4;
+    n4->next = n2; // loop
+
+    EXPECT_EQ(n2, getLoopStart(n1));
+}
+
+
+TEST(ch2_ex8_loopDetection, noLoop)
+{
+    Node* n1 = new Node(1);
+    Node* n2 = new Node(1);
+    Node* n3 = new Node(1);
+    Node* n4 = new Node(1);
+
+    n1->next = n2;
+    n2->next = n3;
+    n3->next = n4;
+
+    EXPECT_EQ(nullptr, getLoopStart(n1));
+}
+

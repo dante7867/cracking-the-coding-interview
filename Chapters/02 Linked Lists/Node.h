@@ -355,5 +355,28 @@ Node* getIntersection(Node* n1, Node* n2)
     return nullptr;
 }
 
+/*
+2.8 Loop Detection: Given a circular linked list, implement an algorithm that returns the node at the
+beginning of the loop.
+DEFINITION
+Circular linked list: A (corrupt) linked list in which a node's next pointer points to an earlier node, so
+as to make a loop in the linked list.
+EXAMPLE
+Input: A -> B -> C -> D -> E -> C [the same C as earlier]
+Output: C
+Hints: #50, #69, #83, #90
+*/
 
+Node* getLoopStart(Node* n)
+{
+    std::set<Node*> s;
+    while(n)
+    {
+        if(s.contains(n))
+	    return n;
+	s.insert(n);
+	n = n->next;
+    }
+    return nullptr;
+}
 
