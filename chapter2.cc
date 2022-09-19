@@ -211,3 +211,68 @@ TEST(ch2_ex3_deteleMiddleNode, DoesntDeleteLastElement)
     std::vector<int> expected = {1, 2, 3, 4, 5};
     EXPECT_EQ(n->toVector(), expected);
 }
+
+
+TEST(ch2_ex4_partition, basicTest)
+{
+    Node* n = new Node(3);
+    n->appendToTail(5);
+    n->appendToTail(8);
+    n->appendToTail(5);
+    n->appendToTail(10);
+    n->appendToTail(2);
+    n->appendToTail(1);
+
+    n->partition(5);
+    auto is_smaller_than_five = [](int i){ return i < 5; };
+    auto vec = n->toVector();
+    EXPECT_TRUE(std::is_partitioned(vec.begin(), vec.end(), is_smaller_than_five));
+}
+
+
+TEST(ch2_ex4_partition, PartitionedFromStart)
+{
+    Node* n = new Node(1);
+    n->appendToTail(2);
+    n->appendToTail(3);
+    n->appendToTail(4);
+    n->appendToTail(5);
+    n->appendToTail(6);
+
+    n->partition(3);
+    auto is_smaller_than_three = [](int i){ return i < 3; };
+    auto vec = n->toVector();
+    EXPECT_TRUE(std::is_partitioned(vec.begin(), vec.end(), is_smaller_than_three));
+}
+
+
+TEST(ch2_ex4_partition, ValueBiggerThanAnyListElement)
+{
+    Node* n = new Node(6);
+    n->appendToTail(5);
+    n->appendToTail(4);
+    n->appendToTail(3);
+    n->appendToTail(2);
+    n->appendToTail(1);
+
+    n->partition(100);
+    auto is_smaller_than_100 = [](int i){ return i < 100; };
+    auto vec = n->toVector();
+    EXPECT_TRUE(std::is_partitioned(vec.begin(), vec.end(), is_smaller_than_100));
+}
+
+
+TEST(ch2_ex4_partition, ValueSmallerThanAnyListElement)
+{
+    Node* n = new Node(6);
+    n->appendToTail(5);
+    n->appendToTail(4);
+    n->appendToTail(3);
+    n->appendToTail(2);
+    n->appendToTail(1);
+
+    n->partition(0);
+    auto is_smaller_than_0 = [](int i){ return i < 100; };
+    auto vec = n->toVector();
+    EXPECT_TRUE(std::is_partitioned(vec.begin(), vec.end(), is_smaller_than_0));
+}

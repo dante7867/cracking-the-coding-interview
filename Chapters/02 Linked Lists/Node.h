@@ -1,6 +1,8 @@
 #include <iostream>
+#include <algorithm>
 #include <set>
 #include <vector>
+
 
 struct Node
 {
@@ -185,9 +187,31 @@ struct Node
      * 3 -> 5 -> 8 -> 5 -> 10 -> 2 -> 1 [partition= 5]
      * 3 -> 1 -> 2 -> 10 -> 5 -> 5 -> 8
      */
-    void partition()
+    void partition(int value)
     {
-        
+	Node* bigger = this;
+	Node* smaller = this;
+	
+	while(true)
+	{
+		while(bigger->val < value)
+		{
+			bigger = bigger->next;
+			if(nullptr == bigger)
+				return;
+		}
+		smaller = bigger;
+		while(smaller->val >= value)
+		{
+			smaller = smaller->next;
+			if(nullptr == smaller)
+				break;
+		}
+		if(nullptr == bigger || nullptr == smaller)
+			return;
+		std::swap(bigger->val, smaller->val);
+	}
+	
     }
 };
 
